@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int T;
+    cin >> T;
+    while (T--) {
+        long long N, K;
+        cin >> N >> K;
+        string S;
+        cin >> S;
+
+        // Build F = S without 'I' (fixed letters)
+        vector<char> F;
+        F.reserve(N);
+        for (char c : S) {
+            if (c != 'I') F.push_back(c);
+        }
+
+        long long m = F.size();
+
+        // Case 1: All characters are 'I'
+        if (m == 0) {
+            // Whole A can be made into one letter
+            cout << (N * K - 1) << "\n";
+            continue;
+        }
+
+        // Count internal differing pairs inside one F
+        long long d_internal = 0;
+        for (int i = 0; i + 1 < m; i++) {
+            if (F[i] != F[i + 1]) d_internal++;
+        }
+
+        // Crossing transition between copies
+        long long cross = (F.back() != F.front()) ? 1 : 0;
+
+        // Total forced transitions
+        long long transitions = K * d_internal + (K - 1) * cross;
+
+        long long total_len = N * K;
+        long long ans = total_len - 1 - transitions;
+
+        cout << ans << "\n";
+    }
+    return 0;
+}
