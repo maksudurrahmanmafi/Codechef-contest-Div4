@@ -1,0 +1,61 @@
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int T;
+    cin >> T;
+    while (T--) {
+        int N;
+        cin >> N;
+        vector<int> A(N), B(N);
+        for(int i=0;i<N;i++) cin >> A[i];
+        for(int i=0;i<N;i++) cin >> B[i];
+
+        vector<int> maxEndA(N), maxStartA(N);
+        vector<int> maxEndB(N), maxStartB(N);
+
+        // max subarray ending at i (A)
+        int current = 0;
+        for(int i=0;i<N;i++){
+            current = max(A[i], current + A[i]);
+            maxEndA[i] = current;
+        }
+
+        // max subarray starting at i (A)
+        current = 0;
+        for(int i=N-1;i>=0;i--){
+            current = max(A[i], current + A[i]);
+            maxStartA[i] = current;
+        }
+
+        // max subarray ending at i (B)
+        current = 0;
+        for(int i=0;i<N;i++){
+            current = max(B[i], current + B[i]);
+            maxEndB[i] = current;
+        }
+
+        // max subarray starting at i (B)
+        current = 0;
+        for(int i=N-1;i>=0;i--){
+            current = max(B[i], current + B[i]);
+            maxStartB[i] = current;
+        }
+
+        long long ans = LLONG_MIN;
+        for(int i=0;i<N;i++){
+            long long maxA = (long long)maxEndA[i] + maxStartA[i] - A[i];
+            long long maxB = (long long)maxEndB[i] + maxStartB[i] - B[i];
+            ans = max(ans, maxA + maxB);
+        }
+
+        cout << ans << "\n";
+    }
+
+    return 0;
+}
