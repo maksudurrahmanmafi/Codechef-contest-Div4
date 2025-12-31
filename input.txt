@@ -1,0 +1,35 @@
+#include <iostream>
+
+using namespace std;
+
+void solve() {
+    long long n;
+    cin >> n;
+
+    // Keep dividing by 2 as long as the number is even
+    // This represents the optimal choice for the even operation
+    while (n > 0 && n % 2 == 0) {
+        n /= 2;
+    }
+
+    // After dividing out all 2s, we are left with the 'core' odd number.
+    // Only 1 and 3 can reach the target 1.
+    if (n == 1 || n == 3) {
+        cout << "Yes" << endl;
+    } else {
+        cout << "No" << endl;
+    }
+}
+
+int main() {
+    // Standard speed-up for competitive programming
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
+    return 0;
+}

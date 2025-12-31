@@ -48,16 +48,18 @@ int main()
         {
             cin >> b[i];
         }
-        vector<ll>pre(n+1);
-        pre[0]=b[0];
-        for(int i =1;i<n;i++){
-            pre[i]=min(pre[i-1],b[i]);
+        vector<ll> pre(n + 1);
+        pre[0] = b[0];
+        for (int i = 1; i < n; i++)
+        {
+            pre[i] = min(pre[i - 1], b[i]);
         }
-        ll ans =0;
-        for(int i =0;i<n;i++){
-            ans += a[i]*pre[i];
+        ll ans = 0;
+        for (int i = 0; i < n; i++)
+        {
+            ans += a[i] * pre[i];
         }
-        cout<<ans<<'\n';
+        cout << ans << '\n';
     }
     return 0;
 }

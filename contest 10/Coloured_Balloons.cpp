@@ -19,7 +19,7 @@ int main()
         }
         // int sum = accumulate(v.begin(),v.end(),0);
         // if(v.size()==1)cout<<sum<<'\n';
-        int sum =0;
+        ll sum =0;
         for(int i =0;i<n;i++){
             sum+=(i+1)*v[i];
 
