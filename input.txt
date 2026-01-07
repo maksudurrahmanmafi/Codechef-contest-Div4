@@ -1,28 +1,40 @@
-#include <iostream>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 void solve() {
-    long long n;
+    int n;
     cin >> n;
 
-    // Keep dividing by 2 as long as the number is even
-    // This represents the optimal choice for the even operation
-    while (n > 0 && n % 2 == 0) {
-        n /= 2;
+    // N < 3 হলে ৩টি পথ পাওয়া অসম্ভব
+    if (n < 3) {
+        cout << -1 << "\n";
+        return;
     }
 
-    // After dividing out all 2s, we are left with the 'core' odd number.
-    // Only 1 and 3 can reach the target 1.
-    if (n == 1 || n == 3) {
-        cout << "Yes" << endl;
-    } else {
-        cout << "No" << endl;
+    // n x n গ্রিড তৈরি করে সব 0 দিয়ে পূর্ণ করা
+    vector<vector<int>> grid(n, vector<int>(n, 0));
+
+    // প্রথম সারির সব সেল 1 করা
+    for (int j = 0; j < n; j++) {
+        grid[0][j] = 1;
+    }
+
+    // শেষ দুটি কলামের বাকি সেলগুলো 1 করা
+    for (int i = 1; i < n; i++) {
+        grid[i][n - 2] = 1;
+        grid[i][n - 1] = 1;
+    }
+
+    // গ্রিড প্রিন্ট করা
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << grid[i][j] << (j == n - 1 ? "" : " ");
+        }
+        cout << "\n";
     }
 }
 
 int main() {
-    // Standard speed-up for competitive programming
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
