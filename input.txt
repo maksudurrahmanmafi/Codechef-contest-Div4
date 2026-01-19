@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int t;
+    cin>>t;
+    while(t--){
+     
+        long long L, W;
+        cin >> L >> W;
+    
+        long long R, G, B;
+        cin >> R >> G >> B;
+    
+        // Fence sides
+        vector<long long> sides = {L, L, W, W};
+        sort(sides.rbegin(), sides.rend()); // large first
+    
+        // Paint amounts
+        multiset<long long> paints = {R, G, B};
+    
+        int totalCost = 0;
+    
+        for (long long side : sides) {
+            // Try to paint this side with one color
+            auto it = paints.lower_bound(side);
+    
+            if (it != paints.end()) {
+                // One color is enough
+                totalCost += 1;
+                long long rem = *it - side;
+                paints.erase(it);
+                paints.insert(rem);
+            } else {
+                // Need to mix colors
+                long long need = side;
+                int usedColors = 0;
+    
+                while (need > 0 && !paints.empty()) {
+                    auto it2 = prev(paints.end());
+                    long long take = min(*it2, need);
+                    need -= take;
+                    long long rem = *it2 - take;
+                    paints.erase(it2);
+                    if (rem > 0)
+                        paints.insert(rem);
+                    usedColors++;
+                }
+    
+                totalCost += usedColors;
+            }
+        }
+    
+        cout << totalCost << '\n';
+    }
+
+    return 0;
+}
