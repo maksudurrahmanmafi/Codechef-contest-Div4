@@ -1,38 +1,32 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+void solve() {
+    int n;
+    long long k;
+    cin >> n >> k;
+    vector<long long> p(n);
+    for (int i = 0; i < n; i++) cin >> p[i];
+
+    vector<int> dp(n + 1, 0);
+    
+    for (int i = 1; i <= n; i++) {
+        dp[i] = dp[i - 1]; // স্কিপ করার অপশন
+        for (int j = 1; j < i; j++) {
+            if (abs(p[i - 1] - p[j - 1]) > k) {
+                dp[i] = max(dp[i], 1 + dp[j - 1]);
+            }
+        }
+    }
+    cout << dp[n] << endl;
+}
+int main(){
     int t;
     cin>>t;
     while(t--){
-    int N;
-     
-        cin >> N;
-    
-        map<int, int> freq;
-    
-        for (int i = 0; i < N; i++) {
-            int x;
-            cin >> x;
-            freq[x]++;
-        }
-    
-        int bestColor = -1;
-        int maxFreq = 0;
-    
-        for (auto it : freq) {
-            int color = it.first;
-            int count = it.second;
-    
-            if (count > maxFreq) {
-                maxFreq = count;
-                bestColor = color;
-            }
-        }
-    
-        cout << bestColor << "\n";
+     solve();
     }
-    return 0;
 }

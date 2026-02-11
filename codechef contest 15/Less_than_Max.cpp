@@ -1,30 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+#define ll long long
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int T;
-    cin >> T;
-    while (T--) {
-        int N;
-        cin >> N;
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
 
-        unordered_map<int, long long> dp;
-        long long ans = 0;
+        unordered_map<int, ll> mp;
+        ll ans = 0;
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             int x;
             cin >> x;
 
             if (x == 1) {
-                dp[1]++;
-            } else if (dp.count(x - 1)) {
-                dp[x] = max(dp[x], dp[x - 1] + 1);
+                mp[1]++;
+            } else if (mp.count(x - 1)) {
+                mp[x] = max(mp[x], mp[x - 1] + 1);
             }
 
-            ans = max(ans, dp[x]);
+            ans = max(ans, mp[x]);
         }
 
         cout << ans << '\n';

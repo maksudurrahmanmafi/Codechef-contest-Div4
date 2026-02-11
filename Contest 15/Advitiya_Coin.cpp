@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    cin.tie(nULL);
     int t;
     cin >> t;
     while (t--)
@@ -33,48 +33,3 @@ int main()
 }
  */
 
- #include <bits/stdc++.h>
-using namespace std;
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    int T;
-    cin >> T;
-
-    while (T--) {
-        int N;
-        long long K;
-        cin >> N >> K;
-
-        vector<long long> P(N);
-        for (int i = 0; i < N; i++) {
-            cin >> P[i];
-        }
-
-        int count = 0;
-        long long start = P[0];
-
-        for (int i = 1; i < N; i++) {
-            if (llabs(P[i] - start) > K) {
-                // Winning trade found
-                count++;
-                start = P[i]; // start new trade
-            } else {
-                // Update start to maximize chance of future winning trade
-                if (P[i] > start) {
-                    // upward trend → keep minimum
-                    start = min(start, P[i]);
-                } else {
-                    // downward trend → keep maximum
-                    start = max(start, P[i]);
-                }
-            }
-        }
-
-        cout << count << '\n';
-    }
-
-    return 0;
-}

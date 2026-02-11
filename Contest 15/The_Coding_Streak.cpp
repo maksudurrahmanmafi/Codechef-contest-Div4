@@ -25,14 +25,12 @@ int main()
         {
             if (v[i] > 0)
             {
-                // যদি অন্তত ১টি প্রবলেম সলভ করে, তবে স্ট্রিক বাড়বে
                 current_streak++;
-                // সর্বোচ্চ স্ট্রিক আপডেট করা
                 max_streak = max(max_streak, current_streak);
             }
             else
             {
-                // ০ পাওয়া মানে স্ট্রিক ভেঙে গেছে
+
                 current_streak = 0;
             }
         }
