@@ -1,32 +1,43 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <cmath>
 
 using namespace std;
 
 void solve() {
     int n;
-    long long k;
-    cin >> n >> k;
-    vector<long long> p(n);
-    for (int i = 0; i < n; i++) cin >> p[i];
-
-    vector<int> dp(n + 1, 0);
+    cin >> n;
+    vector<int> a(n);
     
-    for (int i = 1; i <= n; i++) {
-        dp[i] = dp[i - 1]; // স্কিপ করার অপশন
-        for (int j = 1; j < i; j++) {
-            if (abs(p[i - 1] - p[j - 1]) > k) {
-                dp[i] = max(dp[i], 1 + dp[j - 1]);
-            }
+    int even_count = 0;
+    int odd_count = 0;
+
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+        // পজিটিভ বা নেগেটিভ নির্বিশেষে জোড়-বিজোড় চেক
+        if (abs(a[i]) % 2 == 0) {
+            even_count++;
+        } else {
+            odd_count++;
         }
     }
-    cout << dp[n] << endl;
-}
-int main(){
-    int t;
-    cin>>t;
-    while(t--){
-     solve();
+
+    // যদি সবগুলোই জোড় হয় অথবা সবগুলোই বিজোড় হয়
+    if (even_count == n || odd_count == n) {
+        cout << "YES" << endl;
+    } else {
+        cout << "NO" << endl;
     }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
+    return 0;
 }

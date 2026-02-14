@@ -7,6 +7,6 @@ int main() {
     cin.tie(NULL);
     char c;
     cin>>c;
-    cout<<(c-'A'+1);
+    cout<<(c-'A'+1)<<'\n';
     return 0;
 }
