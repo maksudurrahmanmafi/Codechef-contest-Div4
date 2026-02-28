@@ -27,7 +27,7 @@ int main() {
 
     int sum = a + b;
 
-    cout << songs[sum] << endl;
+    cout << songs[sum] << '\n';
     }
     return 0;
 }

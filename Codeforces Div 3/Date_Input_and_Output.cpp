@@ -3,8 +3,7 @@ using namespace std;
 
 int main() {
     string date;
-    cin >> date;   // read whole string
-
+    cin >> date;   
     string dd = date.substr(0,2);
     string mm = date.substr(3,2);
     string yy = date.substr(6,2);

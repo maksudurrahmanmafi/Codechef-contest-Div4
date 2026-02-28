@@ -1,39 +1,38 @@
 #include <iostream>
 #include <vector>
-#include <cmath>
+#include <set>
 
 using namespace std;
 
 void solve() {
     int n;
     cin >> n;
-    vector<int> a(n);
     
-    int even_count = 0;
-    int odd_count = 0;
-
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+    
+    set<int> seen;
+    int pairs = 0;
+    
     for (int i = 0; i < n; i++) {
-        cin >> a[i];
-        // পজিটিভ বা নেগেটিভ নির্বিশেষে জোড়-বিজোড় চেক
-        if (abs(a[i]) % 2 == 0) {
-            even_count++;
+        // যদি সংখ্যাটি আগে দেখা হয়ে থাকে, তবে একটি জোড়া তৈরি হলো
+        if (seen.count(a[i])) {
+            pairs++;
+            seen.clear(); // নতুন জোড়া খোঁজার জন্য মেমোরি ক্লিয়ার
         } else {
-            odd_count++;
+            // অন্যথায় সংখ্যাটি মনে রাখি
+            seen.insert(a[i]);
         }
     }
-
-    // যদি সবগুলোই জোড় হয় অথবা সবগুলোই বিজোড় হয়
-    if (even_count == n || odd_count == n) {
-        cout << "YES" << endl;
-    } else {
-        cout << "NO" << endl;
-    }
+    
+    // প্রতিটি জোড়ায় ২টি করে উপাদান থাকে
+    cout << pairs * 2 << endl;
 }
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-
+    
     int t;
     cin >> t;
     while (t--) {

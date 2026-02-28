@@ -5,9 +5,9 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int x;
-    cin>>x;
-    if(x>30)cout<<"YES";
-    else cout<<"NO";
+    string a,b;
+    cin>>a>>b;
+    if(a==b)cout<<a<<'\n';
+    else cout<<1<<'\n';
     return 0;
 }

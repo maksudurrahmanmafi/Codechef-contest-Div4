@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <numeric>
-
+#include<bits/stdc++.h>
 using namespace std;
 
 void solve() {
@@ -26,12 +23,12 @@ void solve() {
         cout << 0 << endl;
     } else if (remainder == 2) {
         cout << 1 << endl;
-    } else { // remainder == 1
-        // যদি এমন কোনো সংখ্যা থাকে যাকে সরালে যোগফল ৩ দ্বারা বিভাজ্য হয়
+    } else { 
+       
         if (has_rem_1) {
             cout << 1 << endl;
         } else {
-            // অন্যথায় ২ মুভ লাগবে (একটি সংখ্যায় ২ যোগ করা)
+           
             cout << 2 << endl;
         }
     }
