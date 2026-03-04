@@ -19,17 +19,3 @@ int main() {
 }
  */
 
- #include <iostream>
-#include <string>
-
-using namespace std;
-
-int main() {
-    string s = "Hello Codham";
-    
-    // মোট অক্ষর সংখ্যা (স্পেসসহ)
-    cout << "Total characters: " << s.length() << endl; 
-    // আউটপুট হবে: 12
-    
-    return 0;
-}
