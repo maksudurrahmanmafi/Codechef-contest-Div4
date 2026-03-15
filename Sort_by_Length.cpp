@@ -1,9 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <sstream>
-#include <algorithm>
-
+#include<bits/stdc++.h>
 using namespace std;
 
 // দৈর্ঘ্য অনুযায়ী তুলনা করার জন্য কাস্টম ফাংশন
