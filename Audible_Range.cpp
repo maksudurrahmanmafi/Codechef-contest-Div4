@@ -5,6 +5,12 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    cout<<"Hello world"<<'\n';
+    int t;
+    cin>>t;
+    while(t--){
+     int x;
+     cin>>x;
+     cout<<(x>=67 &&x<=45000?"YES\n":"NO\n");
+    }
     return 0;
 }
