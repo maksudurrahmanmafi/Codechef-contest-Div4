@@ -12,21 +12,21 @@ int main() {
         int n;
         cin >> n;
 
-        int left = 1;
-        int right = 3 * n;
+        int l = 1;
+        int r = 3 * n;
 
-        vector<int> ans;
+        vector<int> v;
 
         for (int i = 0; i < n; i++) {
-            ans.push_back(left);
-            ans.push_back(right);
-            ans.push_back(right - 1);
+            v.push_back(l);
+            v.push_back(r);
+            v.push_back(r - 1);
 
-            left++;
-            right -= 2;
+            l++;
+            r -= 2;
         }
 
-        for (int x : ans) cout << x << " ";
+        for (int x : v) cout << x << " ";
         cout << "\n";
     }
 
