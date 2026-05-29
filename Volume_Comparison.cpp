@@ -1,5 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+int main() {
+    int a,b,c,x;
+    cin >> a >> b >> c >> x;
+
+    cout << (a*b*c > x*x*x ? "Cuboid" : (a*b*c < x*x*x ? "Cube" : "Equal")) << endl;
+
+    return 0;
+}
+
+/* #include <bits/stdc++.h>
+
+using namespace std;
 #define ll long long int
 
 int main() {
@@ -14,3 +27,4 @@ int main() {
     else cout<<"Equal\n";
     return 0;
 }
+ */
